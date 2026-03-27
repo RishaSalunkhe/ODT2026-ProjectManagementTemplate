@@ -83,10 +83,12 @@ Avoid names like:
 
 # 4. Adding Images to your README
 
+
 **Rule #1:** You must upload your image file to the `images/` folder *before* you can link it in the README. 
+
 **Rule #2:** File names are case-sensitive. `Image.JPG` is not the same as `image.jpg`.
 
-I have placed a file called `sample_image_1.jpg` and 'sample_image_2.jpg' in your `images/` folder. Copy and paste the 4 examples below into your README to see how they work!
+I have placed a file called `sample_image_1.jpg` and `sample_image_2.jpg` in your `images/` folder. Copy and paste the 4 examples below into your README to see how they work!
 
 ---
 
