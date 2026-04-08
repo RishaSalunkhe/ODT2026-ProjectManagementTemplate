@@ -58,8 +58,8 @@ By the final review, this README should clearly show:
 
 | Name | Primary Role | Secondary Role | Strengths Brought to the Project |
 |---|---|---|---|
-| `Risha Salunkhe` | `[Electronics / Coding / App / Fabrication / Mechanics]` | `[Role]` | `[Write here]` |
-| `Swaranjali Garima` | `[Electronics / Coding / App / Fabrication / Mechanics]` | `[Role]` | `[Write here]` |
+| `Risha Salunkhe` | `Coding` | `[Role]` | `[Write here]` |
+| `Swaranjali Garima` | `Coding` | `[Role]` | `[Write here]` |
 
 ## 1.3 Project Title
 `[Enter the title of your project]`
@@ -120,8 +120,8 @@ List what inspired the project.
 
 | Source Type | Title / Link | What Inspired You |
 |---|---|---|
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
+| `App` | `https://play.google.com/store/apps/details?id=com.youmusic.magictiles&hl=en_IN` | `[What did you learn or borrow?]` |
+| `Game` | `The Floor is Lava` | `[What did you learn or borrow?]` |
 | `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
 
 ## 3.2 Original Twist
