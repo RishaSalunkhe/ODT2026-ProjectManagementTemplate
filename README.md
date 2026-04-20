@@ -339,7 +339,7 @@ What changed after the CAD, animation, or simulation stage?
 | Component | Quantity | Purpose |
 |---|---:|---|
 | ESP32 WROOM-32 DevKit| 1 | Main controller — reads capacitive touch, sends serial data to laptop |
-| `[Component]` | `[Qty]` | `[Purpose]` |
+| USB cable (micro-USB) | 1 |Powers ESP32 and carries serial data to lapto |
 | `[Component]` | `[Qty]` | `[Purpose]` |
 
 ## 9.2 Wiring Plan
@@ -358,7 +358,7 @@ Insert a hand-drawn or software-made circuit diagram.
 
 | Question | Response |
 |---|---|
-| Power source | `[USB / battery / adapter / other]` |
+| Power source | USB (micro-USB from laptop to ESP32) |
 | Voltage required | `[Write here]` |
 | Current concerns | `[Write here]` |
 | Safety concerns | `[Write here]` |
@@ -464,8 +464,8 @@ Insert a sketch or screenshot of the app interface.
 
 | Item | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec | Why This Choice? |
 |---|---:|---|---|---:|---|---|
-| `[ESP32]` | `1` | `Yes` | `No` | `0` | `[Spec]` | `[Reason]` |
-| `[Item]` | `[Qty]` | `[Yes/No]` | `[Yes/No]` | `[Cost]` | `[Spec]` | `[Reason]` |
+| ESP32 WROOM-32 DevKit |1| Yes | Yes | 599 | SquadPixel ESP-WROOM-32, 38-pin | Has 8 built-in capacitive touch pins, no external sensor IC needed |
+| MDF board | 1 | No | No | `[Cost]` | `[Spec]` | `[Reason]` |
 | `[Item]` | `[Qty]` | `[Yes/No]` | `[Yes/No]` | `[Cost]` | `[Spec]` | `[Reason]` |
 
 ## 12.2 Material Justification
@@ -478,25 +478,27 @@ Examples:
 - Why bearing instead of a plain shaft hole?
 
 **Response:**  
-`[Write here]`
+Aluminium foil over copper sheet or metal plates: Foil is cheap, available immediately, and wraps cleanly around foamboard. The ESP32's capacitive sensing is sensitive enough to detect touch through foil perfectly well. Metal plates would be more durable but cost more and require drilling or adhesive mounting.
+MDF over plywood or 3D print: MDF cuts cleanly with a jigsaw and gives precise rectangular cutout windows. It is flat, paintable, and available at any hardware store. 3D printing would take too long and not give the required rigidity at this size.
+USB serial over Bluetooth: Wired USB is more reliable for a live exhibition — no pairing issues, no dropout, no latency. Bluetooth would add unnecessary complexity for a first build.
 
 ## 12.3 Items to Purchase Separately
 
 | Item | Why Needed | Purchase Link | Latest Safe Date to Procure | Status |
 |---|---|---|---|---|
-| `[Item]` | `[Reason]` | `[Link]` | `[Date]` | `[Pending / Ordered / Received]` |
+| ESP32 WROOM-32 | `[Reason]` | `[Link]` | `[Date]` | `[Pending / Ordered / Received]` |
 | `[Item]` | `[Reason]` | `[Link]` | `[Date]` | `[Pending / Ordered / Received]` |
 
 ## 12.4 Budget Summary
 
 | Budget Item | Estimated Cost |
 |---|---:|
-| Electronics | `[Cost]` |
+| Electronics | 599 |
 | Mechanical parts | `[Cost]` |
 | Fabrication materials | `[Cost]` |
 | Purchased extras | `[Cost]` |
 | Contingency | `[Cost]` |
-| **Total** | `[Cost]` |
+| **Total** | 599 |
 
 ## 12.5 Budget Reflection
 If your cost is too high, what can be simplified, removed, substituted, or shared?
@@ -525,9 +527,9 @@ Include:
 
 | Task ID | Task | Owner | Estimated Hours | Deadline | Dependency | Status |
 |---|---|---|---:|---|---|---|
-| T1 | `[Finalize concept]` | `[Name]` | `2` | `[Date]` | `None` | `To Do` |
-| T2 | `[Complete BOM]` | `[Name]` | `1` | `[Date]` | `T1` | `To Do` |
-| T3 | `[Test electronics]` | `[Name]` | `2` | `[Date]` | `T1` | `To Do` |
+| T1 | Finalise concept and game mechanic | Risha & Swaranjali | 6 | `[Date]` | `None` | `To Do` |
+| T2 | Complete BOM and procure materials` | `[Name]` | `1` | `[Date]` | `T1` | `To Do` |
+| T3 | Upload ESP32 sketch and test touch pins | `[Name]` | `2` | `[Date]` | `T1` | `To Do` |
 | T4 | `[Build structure]` | `[Name]` | `4` | `[Date]` | `T1` | `To Do` |
 | T5 | `[Write control code]` | `[Name]` | `4` | `[Date]` | `T3` | `To Do` |
 | T6 | `[Integrate system]` | `[Name]` | `4` | `[Date]` | `T4, T5` | `To Do` |
@@ -538,13 +540,13 @@ Include:
 
 | Area | Main Owner | Support Owner |
 |---|---|---|
-| Concept and gameplay | `[Name]` | `[Name]` |
+| Concept and gameplay | Risha & Swaranjali | Risha & Swaranjali  |
 | Electronics | `[Name]` | `[Name]` |
-| Coding | `[Name]` | `[Name]` |
-| App | `[Name]` | `[Name]` |
+| Coding | Swaranjali | `[Name]` |
+| App | Swaranjali | `[Name]` |
 | Mechanical build | `[Name]` | `[Name]` |
 | Testing | `[Name]` | `[Name]` |
-| Documentation | `[Name]` | `[Name]` |
+| Documentation | Risha | Swaranjali |
 
 ---
 
@@ -554,12 +556,12 @@ Include:
 
 ### Week 1 — Plan and De-risk
 Expected outcomes:
-- [ ] Idea finalized
-- [ ] Core interaction decided
+- [*] Idea finalized
+- [*] Core interaction decided
 - [ ] Sketches made
 - [ ] BOM completed
 - [ ] Purchase needs identified
-- [ ] Key uncertainty identified
+- [*] Key uncertainty identified
 - [ ] Basic feasibility tested
 
 ### Week 2 — Build Subsystems
@@ -572,7 +574,7 @@ Expected outcomes:
 
 ### Week 3 — Integrate
 Expected outcomes:
-- [ ] Physical body built
+- [*] Physical body built
 - [ ] Electronics integrated
 - [ ] Code connected to hardware
 - [ ] App connected if required
@@ -582,9 +584,9 @@ Expected outcomes:
 Expected outcomes:
 - [ ] Technical bugs reduced
 - [ ] Playtesting completed
-- [ ] Improvements made
-- [ ] Documentation completed
-- [ ] Final build ready
+- [*] Improvements made
+- [*] Documentation completed
+- [*] Final build ready
 
 ## 14.2 Weekly Update Log
 
@@ -631,11 +633,11 @@ What is the single biggest uncertainty in your project at this stage?
 
 | Question | How You Will Check |
 |---|---|
-| Do players understand what to do? | `[Method]` |
-| Is the interaction satisfying? | `[Method]` |
-| Do players want another turn? | `[Method]` |
-| Is the challenge balanced? | `[Method]` |
-| Is the response clear and immediate? | `[Method]` |
+| Do players understand what to do?  |Watch first-time players — do they immediately tap the correct pad without instruction?|
+| Is the interaction satisfying? | Ask players if the note felt connected to their touch or delayed |
+| Do players want another turn? | Count how many players immediately try again after finishing or failing |
+| Is the challenge balanced? | Check if the song sequence feels too fast or too slow, adjust timing in code |
+| Is the response clear and immediate? | Ask players if they could immediately tell they hit the wrong pad |
 
 ## 16.3 Testing and Debugging Log
 
