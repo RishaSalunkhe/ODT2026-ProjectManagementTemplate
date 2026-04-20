@@ -120,15 +120,15 @@ List what inspired the project.
 
 | Source Type | Title / Link | What Inspired You |
 |---|---|---|
-| `App` | `https://play.google.com/store/apps/details?id=com.youmusic.magictiles&hl=en_IN` | `[What did you learn or borrow?]` |
-| `Game` | `The Floor is Lava` | `[What did you learn or borrow?]` |
+| `App` | `https://play.google.com/store/apps/details?id=com.youmusic.magictiles&hl=en_IN` | The core mechanic, tapping the correct tile in a sequence to play a song. We borrowed the visual cue system (one tile lights up at a time) and the immediate correct/wrong feedback loop. |
+| `Game` | `The Floor is Lava` |The physical urgency of having to react quickly to a spatial cue. Inspired the idea of making a screen-based game feel physical and embodied. |
 | `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
 
 ## 3.2 Original Twist
 What makes your project original?
 
 **Response:**  
-`[Write here]`
+Magic Piano takes a mobile game mechanic and makes it fully physical. Instead of tapping a screen, players touch real pads embedded in a real table, with a real projector overhead. The social dimension, four players at one table, sharing a song, is something the mobile version cannot replicate. The handmade quality of the build (foil pads, MDF cutouts, copper tape wiring) gives it a raw, workshop feel that contrasts with the clean projected interface above it.
 
 ---
 
@@ -144,7 +144,7 @@ Examples:
 - move object → sensor detects → sound/light response → player reacts
 
 **Response:**  
-`[Write here]`
+light cue appears on pad → player taps correct pad → note plays + next cue appears → wrong tap → buzz + reset → repeat until song completes
 
 ## 4.2 Intended Player / Audience
 
