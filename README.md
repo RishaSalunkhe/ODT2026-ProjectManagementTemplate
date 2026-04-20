@@ -150,11 +150,11 @@ light cue appears on pad → player taps correct pad → note plays + next cue a
 
 | Question | Response |
 |---|---|
-| Who is this for? | `[Write here]` |
-| Age range | `[Write here]` |
-| Solo or multiplayer | `[Write here]` |
-| Expected duration of one round | `[Write here]` |
-| What should the player feel? | `[Write here]` |
+| Who is this for? | Exhibition visitors, college students, general public |
+| Age range | All ages — 8 and above |
+| Solo or multiplayer | Up to 4 players simultaneously, same side of table |
+| Expected duration of one round | 2–3 minutes |
+| What should the player feel? | Excitement, musical satisfaction, mild competitive tension, delight at making music together |
 | Is explanation required before use? | `[Write here]` |
 
 ## 4.3 Player Journey
@@ -211,15 +211,15 @@ Check all that apply.
 
 - [ ] Electronics-based
 - [ ] Mechanical
-- [ ] Sensor-based
-- [ ] App-connected
+- [*] Sensor-based
+- [*] App-connected
 - [ ] Motorized
 - [ ] Sound-based
 - [ ] Light-based
 - [ ] Screen/UI-based
 - [ ] Fabricated structure
 - [ ] Game logic based
-- [ ] Installation / tabletop experience
+- [*] Installation / tabletop experience
 - [ ] Other: `[Write here]`
 
 ## 6.2 High-Level System Description
@@ -297,13 +297,13 @@ Check all that apply.
 - [ ] Wheels
 - [ ] Sliders
 - [ ] Levers
-- [ ] Not applicable
+- [*] Not applicable
 
 ## 8.2 Mechanical Description
 Describe the mechanism and what it is meant to do.
 
 **Response:**  
-`[Write here]`
+This project has no moving mechanical parts. The physical structure is static — MDF board with cutout windows, foamboard pads sitting in those windows, and an enclosed box underneath housing electronics. All interaction is through touch only.
 
 ## 8.3 Motion Planning
 If something moves, explain:
