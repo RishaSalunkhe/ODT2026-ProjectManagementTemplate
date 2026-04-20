@@ -314,7 +314,7 @@ If something moves, explain:
 - what could go wrong.
 
 **Response:**  
-`[Write here]`
+Not applicable. Nothing moves in this project. The only "motion" is the player's hand touching a pad.
 
 ## 8.4 Simulation / CAD / Animation Before Making
 If your project includes mechanical motion, document the digital planning before fabrication.
@@ -338,7 +338,7 @@ What changed after the CAD, animation, or simulation stage?
 
 | Component | Quantity | Purpose |
 |---|---:|---|
-| `[ESP32]` | `1` | `[Main controller]` |
+| ESP32 WROOM-32 DevKit| 1 | Main controller — reads capacitive touch, sends serial data to laptop |
 | `[Component]` | `[Qty]` | `[Purpose]` |
 | `[Component]` | `[Qty]` | `[Purpose]` |
 
