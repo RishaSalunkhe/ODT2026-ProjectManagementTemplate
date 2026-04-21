@@ -331,7 +331,7 @@ If your project includes mechanical motion, document the digital planning before
 
 | Tool Used | File / Link | What Was Tested |
 |---|---|---|
-| `[Fusion 360 / Tinkercad / other]` | `[Link or screenshot]` | `[What did you validate?]` |
+| Adobe Illustrator | `[Link or screenshot]` | `[What did you validate?]` |
 | `[Tool]` | `[Link or screenshot]` | `[What did you validate?]` |
 
 ## 8.5 Changes After Digital Testing
