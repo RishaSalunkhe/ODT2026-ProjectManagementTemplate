@@ -643,7 +643,7 @@ What is the single biggest uncertainty in your project at this stage?
 
 | Question | How You Will Check |
 |---|---|
-| Do players understand what to do?  |Watch first-time players — do they immediately tap the correct pad without instruction?|
+| Do players understand what to do?  | Watch first-time players — do they immediately tap the correct pad without instruction?|
 | Is the interaction satisfying? | Ask players if the note felt connected to their touch or delayed |
 | Do players want another turn? | Count how many players immediately try again after finishing or failing |
 | Is the challenge balanced? | Check if the song sequence feels too fast or too slow, adjust timing in code |
@@ -704,10 +704,11 @@ Example:
 
 | Version | Date | What Changed | Why |
 |---|---|---|---|
-| `v1` | `[Date]` | `[Describe]` | `[Reason]` |
-| `v2` | `[Date]` | `[Describe]` | `[Reason]` |
-| `v3` | `[Date]` | `[Describe]` | `[Reason]` |
-
+| v1 | Week 1 | Single pad MicroPython test on bare ESP32 | Validate that capacitive touch sensing worked before committing to full build |
+| v2 | Week 2 | MDF layout created digitally, foamboard pads assembled | First physical build complete |
+| v3 | Week 3 | MDF cut and assembled, foil and wires stuck onto foambboard | First working end-to-end version
+|  v4  |  Week 4 | Screen display setup, threshold tuning, final fixes | Exhibition-ready version
+ 
 ---
 
 # 18. Final Outcome
