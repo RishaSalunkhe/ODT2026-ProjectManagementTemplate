@@ -75,7 +75,8 @@ In 1–2 paragraphs, explain:
 - what technologies are involved.
 
 **Response:**  
-`[Write here]`
+Magic Piano is a physical, multiplayer music game built on a 4×3 ft MDF table. Eight touch-sensitive pads, made from aluminium foil wrapped around foamboard, sitting in cutout windows in the MDF, represent the eight notes of a musical octave (C D E F G A B C5). A screen (projected via a projector positioned beside or behind the table) displays a piano keyboard. The keys on screen light up one at a time in a song sequence. Each key on the screen is spatially aligned with its corresponding physical pad on the table, the player simply looks at the glowing key and taps the pad directly in front of it.
+When the correct pad is touched, the ESP32 detects the contact and sends a signal to the laptop. A Python script on the laptop receives this, confirms the correct touch, plays the corresponding piano note through the laptop speakers, and advances the sequence on screen. A wrong touch plays an error sound and resets the sequence to the beginning. Up to four players stand at one side of the table and share the tapping. The experience requires no instructions, the glowing key on screen tells you exactly what to do, and the position of the pad in front of it tells you where to tap.
 
 ---
 
@@ -101,7 +102,7 @@ Answer the following:
 - Why would someone want to try it again?
 
 **Response:**  
-`[Write here]`
+The experience is a cooperative and competitive music-following game played on a physical table. Players feel the excitement of hitting the right note at the right moment, and the tension of not breaking the chain. The screen gives a clear cue, the foil pad gives a real tactile surface to press, and the sound gives immediate confirmation. Players want to try again because the reset is instant, the challenge is intuitive, and completing a full song together is genuinely satisfying. The physicality of pressing a real pad, rather than a touchscreen, makes the experience feel more deliberate and rewarding.
 
 ## 2.3 Design Persona
 Complete the sentence below:
@@ -109,7 +110,7 @@ Complete the sentence below:
 > We are designing this project as if we are a small creative studio making a **[toy / game / playable object / interactive experience]** for **[children / teens / adults / classmates / exhibition visitors / mixed audience]**.
 
 **Response:**  
-`[Write here]`
+We are designing this project as if we are a small creative studio making a playable interactive installation for a mixed audience of all ages at a college exhibition.
 
 ---
 
@@ -120,9 +121,9 @@ List what inspired the project.
 
 | Source Type | Title / Link | What Inspired You |
 |---|---|---|
-| `App` | `https://play.google.com/store/apps/details?id=com.youmusic.magictiles&hl=en_IN` | The core mechanic, tapping the correct tile in a sequence to play a song. We borrowed the visual cue system (one tile lights up at a time) and the immediate correct/wrong feedback loop. |
-| `Game` | `The Floor is Lava` |The physical urgency of having to react quickly to a spatial cue. Inspired the idea of making a screen-based game feel physical and embodied. |
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
+| App | https://play.google.com/store/apps/details?id=com.youmusic.magictiles&hl=en_IN | The core mechanic, tapping the correct tile in a sequence to play a song. We borrowed the visual cue system (one tile lights up at a time) and the immediate correct/wrong feedback loop. |
+| Game| The Floor is Lava |The physical urgency of having to react quickly to a spatial cue. Inspired the idea of making a screen-based game feel physical and embodied. |
+| Movie | Dhurandhar- The Revenge [Part 2] | Thematic inspiration and reference- we used the song from this movie |
 
 ## 3.2 Original Twist
 What makes your project original?
@@ -144,7 +145,7 @@ Examples:
 - move object → sensor detects → sound/light response → player reacts
 
 **Response:**  
-light cue appears on pad → player taps correct pad → note plays + next cue appears → wrong tap → buzz + reset → repeat until song completes
+key glows on screen → player identifies corresponding pad by position → player taps pad → ESP32 detects touch → laptop plays note + advances sequence → wrong tap → error sound + reset → repeat until song completes
 
 ## 4.2 Intended Player / Audience
 
@@ -160,12 +161,16 @@ light cue appears on pad → player taps correct pad → note plays + next cue a
 ## 4.3 Player Journey
 Describe exactly how a player will use the project.
 
-1. **Approach:** `[How does the player first encounter it?]`
-2. **Start:** `[How do they begin?]`
-3. **First Action:** `[What do they do first?]`
-4. **Main Interaction:** `[What keeps happening during use?]`
-5. **System Response:** `[How does the project respond?]`
-6. **Win / Lose / End Condition:** `[How does one round end?]`
+1. **Approach:**  Player sees a table with 8 plain foil pads and a screen beside it showing a piano keyboard. The display scene shows "Dard-e-Disco".
+2. **Start:** The experience begins when the player clicks a Start button on screen (or when the slide switches into the game state, depending on setup).
+3. **First Action:** A short tutorial sequence begins automatically.
+The piano keys on screen light up one at a time at 0.25x speed, clearly demonstrating what to do.
+Players observe and start tapping the corresponding foil pads in sync.
+4. **Main Interaction:** A short tutorial sequence begins automatically.
+The piano keys on screen light up one at a time at 0.25x speed, clearly demonstrating what to do.
+Players observe and start tapping the corresponding foil pads in sync.
+5. **System Response:** The system provides immediate feedback to reinforce learning and engagement. A correct tap produces the corresponding piano note and progresses the sequence, while an incorrect tap triggers an error sound and resets the sequence to the beginning.
+6. **Win / Lose / End Condition:** 
 7. **Reset:** `[How does the next round begin?]`
 
 ## 4.4 Rules of Play
