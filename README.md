@@ -58,14 +58,14 @@ By the final review, this README should clearly show:
 
 | Name | Primary Role | Secondary Role | Strengths Brought to the Project |
 |---|---|---|---|
-| `Risha Salunkhe` | `Coding` | `[Role]` | `[Write here]` |
-| `Swaranjali Garima` | `Coding` | `[Role]` | `[Write here]` |
+| Risha Salunkhe | Physical set up and circuit connections | Song choice and gameplay | Physical fabrication, MDF build, foil pad assembly, wiring, circuit connections |
+| Swaranjali Garima | Coding and interface design | Presentation layout and instructions | MicroPython on ESP32, Python game logic on laptop, screen visuals, sound triggering|
 
 ## 1.3 Project Title
  Dard-E-Disco
  
  ## 1.4 One-Line Pitch
-`[Describe your project in one sentence]`
+A physical touch-pad table where players follow a song sequence shown on a screen by tapping the correct foil pad — like Magic Tiles, but real and tangible.`
 
 ## 1.5 Expanded Project Idea
 In 1–2 paragraphs, explain:
