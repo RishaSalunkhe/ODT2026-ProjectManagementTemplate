@@ -331,14 +331,13 @@ If your project includes mechanical motion, document the digital planning before
 
 | Tool Used | File / Link | What Was Tested |
 |---|---|---|
-| Adobe Illustrator | `[Link or screenshot]` | `[What did you validate?]` |
-| `[Tool]` | `[Link or screenshot]` | `[What did you validate?]` |
-
+| Adobe Illustrator |  https://github.com/RishaSalunkhe/ODT2026-ProjectManagementTemplate/blob/main/images/Illustrator%20screenshot.png | Made the digital file to be laser cut as that was the best option due to accuracy of measurement, and more efficiency |
+ 
 ## 8.5 Changes After Digital Testing
 What changed after the CAD, animation, or simulation stage?
 
 **Response:**  
-`[Write here]`
+Not applicable — no CAD modelling used. All dimensions validated by physical measurement and paper sketch before MDF was cut.
 
 ---
 
@@ -349,8 +348,9 @@ What changed after the CAD, animation, or simulation stage?
 | Component | Quantity | Purpose |
 |---|---:|---|
 | ESP32 WROOM-32 DevKit| 1 | Main controller — reads capacitive touch, sends serial data to laptop |
-| USB cable (micro-USB) | 1 |Powers ESP32 and carries serial data to lapto |
-| `[Component]` | `[Qty]` | `[Purpose]` |
+| USB cable (micro-USB) | 1 |Powers ESP32 and carries serial data to laptop |
+| Insulated copper wires | 8 | Connect to touchpads |
+| Pin wires | 8 | For establishing connection with ESP32 |
 
 ## 9.2 Wiring Plan
 Describe the main electrical connections.
@@ -381,8 +381,8 @@ Insert a hand-drawn or software-made circuit diagram.
 
 | Tool / Platform | Purpose |
 |---|---|
-| `[MicroPython / Arduino / MIT App Inventor / CAD tool / other]` | `[Purpose]` |
-| `[Tool]` | `[Purpose]` |
+| MIT App Inventor | `[Purpose]` |
+| Thonny- Micropython | `[Purpose]` |
 
 ## 10.2 Software Logic
 Describe what the code must do.
@@ -417,8 +417,26 @@ Suggested sequence:
 
 ## 10.4 Pseudocode
 
-```text
-[Write your pseudocode here]
+START
+Initialize 8 touch pins
+Connect ESP32 to WiFi hotspot
+Set retval = "0"
+
+LOOP:
+    Read all 8 touch pin values
+    If pin value < 200:
+        Set retval = corresponding note letter
+    Process app request
+    Return retval to app
+    Reset retval to "0"
+    Wait 0.05 seconds
+
+APP SIDE:
+Every 100ms, call Web.Get to ESP32 IP
+When response received:
+    If response = "a" → play D4.mp3
+    If response = "b" → play Dsharp.mp3
+    ... and so on for all 8 notes
 ```
 
 ---
