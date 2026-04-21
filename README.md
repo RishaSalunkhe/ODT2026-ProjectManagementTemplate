@@ -249,10 +249,11 @@ Include:
 
 | System Part | Type | What It Does |
 |---|---|---|
-| `[Button / Sensor / Switch / App Input]` | Input | `[Describe]` |
-| `[ESP32 / Controller]` | Processing | `[Describe]` |
-| `[LED / Motor / Servo / Buzzer / Display]` | Output | `[Describe]` |
-| `[Mechanical Assembly]` | Physical Action | `[Describe]` |
+| Foil touch pads (×8) | Input | Capacitive touch, detects contact on each pad|
+| ESP32 | Processing | Reads touch pin values, debounces signals, sends PAD:N over USB serial |
+| Audio File | Output | Plays piano note on correct touch|
+| Projector (ceiling-mounted) | Output | Displays pad cues, highlights active pad, shows win/fail states|
+ 
 
 ---
 
@@ -262,8 +263,8 @@ Include:
 Add an early sketch of the full idea.
 
 **Insert image below:**  
-`[Upload image and link here]`
-
+[`[Upload image and link here]`
+](https://github.com/RishaSalunkhe/ODT2026-ProjectManagementTemplate/blob/main/images/concept%20image.jpeg)
 Example:
 ```md
 
