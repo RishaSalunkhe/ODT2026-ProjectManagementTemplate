@@ -437,9 +437,8 @@ When response received:
     If response = "a" → play D4.mp3
     If response = "b" → play Dsharp.mp3
     ... and so on for all 8 notes
-```
 
----
+
 
 # 11. MIT App Inventor Plan
 
@@ -642,7 +641,8 @@ Expected outcomes:
 What is the single biggest uncertainty in your project at this stage?
 
 **Response:**  
-`[Write here]`
+Biggest Unknown Right Now
+Whether the aluminium foil pads connected via copper tape through foamboard and MDF will give clean, consistent capacitive touch readings on all 8 pins simultaneously without cross-interference. This is a technical risk and was validated with a single-pad test. Response latency under exhibition conditions with multiple players touching pads simultaneously with more than one touch.
 
 ---
 
@@ -671,8 +671,15 @@ What is the single biggest uncertainty in your project at this stage?
 
 | Date | Problem Found | Type | What You Tried | Result | Next Action |
 |---|---|---|---|---|---|
-| `[Date]` | `[Describe issue]` | `[Technical / Mechanical / UI / Gameplay]` | `[What you did]` | `[Worked / Partly / Failed]` | `[Next step]` |
-| `[Date]` | `[Describe issue]` | `[Type]` | `[What you did]` | `[Result]` | `[Next step]` |
+| Week 2 |ESP32 not detecting touch on single pad | Technical  | Set threshold to 100 | Failed   | Retested and raised threshold to 200 |
+| Week 2 | GPIO 2 not working reliably as touch pin | Technical | Identified as boot pin conflict | Failed  | Replaced with GPIO 33 |
+| Week 2 | App Inventor not receiving any signal | Technical | Checked WiFi connection and IP address |Connected successfully | Debugged applink and Clock setup |
+| Week 3 | Sound only triggered by manual button press on app | Technical | Moved block from Button.Click to Clock.Timer  | Worked  | Removed button, made fully automatic |
+| Week 3 | return statement not working inside if statement | Technical | Tried putting return inside each if block | Failed  | Created global variable retval, updated in if blocks |
+| Week 3 | Only one touchpad triggering sound | Technical | Extended retval logic to all 8 if statements  | Worked  |  Verified all 8 pads individually | |
+| Week 3 | Multiple GotText blocks in App Inventor conflicting  | Technical | Tried separate blocks per note |  Failed  | Merged all into one block with if-else chain |
+| Week 3 | Response time too slow | Technical | Clock interval was 1000ms, time.sleep was 0.1s | Too slow | Reduced interval to 100ms and sleep to 0.05s |
+
 
 ## 16.4 Playtesting Notes
 
