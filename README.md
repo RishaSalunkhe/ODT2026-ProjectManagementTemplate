@@ -52,7 +52,7 @@ By the final review, this README should clearly show:
 # 1. Team Identity
 
 ## 1.1 Studio / Group Name
-`Magic Piano`
+Dard-e-Disco
 
 ## 1.2 Team Members
 
@@ -191,12 +191,12 @@ If your project is a game, list the rules clearly.
 ## 5.1 Definition of “Playable”
 Your project will be considered complete only if these conditions are met.
 
-- [ ]  All 8 foil pads reliably detect finger touch and send the correct signal to the ESP32
-- [ ]  The ESP32 correctly identifies which pad was touched and sends the signal to the laptop via USB serial
-- [ ]  The Python script on the laptop correctly plays the corresponding piano note on a correct touch
+- [*]  All 8 foil pads reliably detect finger touch and send the correct signal to the ESP32
+- [*]  The ESP32 correctly identifies which pad was touched and sends the signal to the laptop via USB serial
+- [*]  The Python script on the laptop correctly plays the corresponding piano note on a correct touch
 - [ ]  The Python script plays an error sound and resets the sequence on a wrong touch
-- [ ]  The screen display shows keys lighting up in song sequence and is spatially aligned with the physical pads
-- [ ]   At least one full song sequence can be completed without system failure
+- [*]  The screen display shows keys lighting up in song sequence and is spatially aligned with the physical pads
+- [*]   At least one full song sequence can be completed without system failure
 
 
 ## 5.2 Minimum Viable Version
@@ -357,7 +357,20 @@ Not applicable — no CAD modelling used. All dimensions validated by physical m
 Describe the main electrical connections.
 
 **Response:**  
-`[Write here]`
+**9.2 Wiring Plan**
+
+Each of the 8 aluminium foil touch pads is connected by a single wire to its corresponding GPIO pin on the ESP32. No resistors, capacitors, or additional components are needed as the ESP32 handles capacitive sensing internally. The ESP32 is powered and connected to the laptop via a single micro-USB cable which also carries serial data.
+
+| Connection | From | To |
+|---|---|---|
+| D4 note | Aluminium foil pad 1 | ESP32 GPIO 27 |
+| D#4 note | Aluminium foil pad 2 | ESP32 GPIO 32 |
+| E4 note | Aluminium foil pad 3 | ESP32 GPIO 13 |
+| F4 note | Aluminium foil pad 4 | ESP32 GPIO 14 |
+| F#4 note | Aluminium foil pad 5 | ESP32 GPIO 33 |
+| G4 note | Aluminium foil pad 6 | ESP32 GPIO 15 |
+| A4 note | Aluminium foil pad 7 | ESP32 GPIO 12 |
+| A#4 note | Aluminium foil pad 8 | ESP32 GPIO 4 |
 
 ## 9.3 Circuit Diagram
 Insert a hand-drawn or software-made circuit diagram.
@@ -382,8 +395,9 @@ Insert a hand-drawn or software-made circuit diagram.
 
 | Tool / Platform | Purpose |
 |---|---|
-| MIT App Inventor | `[Purpose]` |
-| Thonny- Micropython | `[Purpose]` |
+| MIT App Inventor | Receive touch trigger from ESP32 over WiFi, play corresponding MP3 note on phone |
+| Thonny IDE |  Write, upload and debug MicroPython code on ESP32 |
+| MicroPython on ESP32 | Read touch sensors, host WiFi access point, serve response to app |
 
 ## 10.2 Software Logic
 Describe what the code must do.
@@ -444,7 +458,7 @@ When response received:
 # 11. MIT App Inventor Plan
 
 ## 11.1 Is an app part of this project?
-- [ ] Yes
+- [*] Yes
 - [ ] No
 
 If yes, complete this section.
@@ -461,7 +475,8 @@ Examples:
 - displaying data.
 
 **Response:**  
-`[Write here]`
+The mobile application built using MIT App Inventor acts as the bridge between the physical touch interface and the audio output. It receives input signals from the ESP32 and translates them into corresponding sound outputs in real time.
+The app enhances the experience by enabling immediate audio feedback for each touch interaction, making the system feel responsive and interactive. It also allows flexibility in controlling and modifying the output (such as mapping different sounds), which would be difficult to achieve using hardware alone. Overall, the app is essential for connecting the input system to a dynamic and user-friendly output experience.
 
 ## 11.3 App Features
 
@@ -514,9 +529,8 @@ USB serial over Bluetooth: Wired USB is more reliable for a live exhibition — 
 
 | Item | Why Needed | Purchase Link | Latest Safe Date to Procure | Status |
 |---|---|---|---|---|
-| ESP32 WROOM-32 | `[Reason]` | `[Link]` | `[Date]` | `[Pending / Ordered / Received]` |
-| `[Item]` | `[Reason]` | `[Link]` | `[Date]` | `[Pending / Ordered / Received]` |
-
+| ESP32 WROOM-32 | Main controller (our original once heatead up and blew off |  https://amzn.in/d/05QAdZsY` | Week 2 | Received |
+ 
 ## 12.4 Budget Summary
 
 | Budget Item | Estimated Cost |
@@ -532,8 +546,7 @@ USB serial over Bluetooth: Wired USB is more reliable for a live exhibition — 
 If your cost is too high, what can be simplified, removed, substituted, or shared?
 
 **Response:**  
-`[Write here]`
-
+Well within range for a college project. If costs need cutting: copper tape can be replaced with aluminium tape, MDF offcuts may be available free at the college fabrication lab, and WAV files are all free online. The ESP32 is the only non-substitutable purchase.
 ---
 
 # 13. Planning the Work
@@ -549,7 +562,7 @@ Include:
 - how documentation will be maintained.
 
 **Response:**  
-`[Write here]`
+Tasks are divided by domain. Risha owns all physical build and hardware, MDF cutting, foil pad assembly, wiring, and ESP32 physical connections. Swaranjali owns all software, MicroPython on the ESP32, Python game script on the laptop, screen display, and audio. Decisions are made jointly at the start of each class. Progress is checked at the start of every session — each person states what is done and what is blocked. If a task is delayed, the other person assists. Documentation is maintained by both throughout — not left until the end.
 
 ## 13.2 Task Breakdown
 
@@ -569,11 +582,11 @@ Include:
 | Area | Main Owner | Support Owner |
 |---|---|---|
 | Concept and gameplay | Risha & Swaranjali | Risha & Swaranjali  |
-| Electronics | `[Name]` | `[Name]` |
-| Coding | Swaranjali | `[Name]` |
-| App | Swaranjali | `[Name]` |
-| Mechanical build | `[Name]` | `[Name]` |
-| Testing | `[Name]` | `[Name]` |
+| Electronics | Swaranjali | Risha |
+| Coding | Swaranjali | -` |
+| App | Swaranjali | - |
+| Physical Structure | Risha | - |
+| Testing | Risha & Swaranjali | Risha & Swaranjali |
 | Documentation | Risha | Swaranjali |
 
 ---
@@ -586,7 +599,7 @@ Include:
 Expected outcomes:
 - [*] Idea finalized
 - [*] Core interaction decided
-- [ ] Sketches made
+- [*] Sketches made
 - [ ] BOM completed
 - [ ] Purchase needs identified
 - [*] Key uncertainty identified
@@ -595,22 +608,22 @@ Expected outcomes:
 ### Week 2 — Build Subsystems
 Expected outcomes:
 - [ ] Electronics tests completed
-- [ ] CAD / structure planning completed
-- [ ] App UI started if needed
+- [*] CAD / structure planning completed
+- [ *] App UI started if needed
 - [ ] Mechanical concept tested
 - [ ] Main subsystems partially working
 
 ### Week 3 — Integrate
 Expected outcomes:
 - [*] Physical body built
-- [ ] Electronics integrated
+- [*] Electronics integrated
 - [ ] Code connected to hardware
-- [ ] App connected if required
+- [*] App connected if required
 - [ ] First playable version exists
 
 ### Week 4 — Refine and Finish
 Expected outcomes:
-- [ ] Technical bugs reduced
+- [*] Technical bugs reduced
 - [ ] Playtesting completed
 - [*] Improvements made
 - [*] Documentation completed
@@ -620,10 +633,10 @@ Expected outcomes:
 
 | Week | Planned Goal | What Actually Happened | What Changed | Next Steps |
 |---|---|---|---|---|
-| Week 1 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 2 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 3 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 4 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
+| Week 1 | Finalise concept, test ESP32 touch, procure materials | Concept finalised and ESP32 touch tested. Materials like MDF, foamboard, and foil were procured. | `[Write here]` | `[Write here]` |
+| Week 2 | Build pads, wire ESP32, build Python script | `[Write here]` | `[Write here]` | `[Write here]` |
+| Week 3 | Full integration, screen alignment, first playtest | `[Write here]` | `[Write here]` | `[Write here]` |
+| Week 4 | Debug, refine, playtest, document | `[Write here]` | `[Write here]` | `[Write here]` |
 
 ---
 
@@ -706,7 +719,11 @@ Include:
 - revisions.
 
 **Response:**  
-`[Write here]`
+The fabrication process began with designing the base structure digitally and preparing vector files in Adobe Illustrator. These files were then used to laser cut MDF components, ensuring precision in dimensions and clean edges for assembly.
+To create the touch interface, foamboard pieces were cut and shaped into individual pads. Each pad was wrapped with aluminium foil to enable capacitive touch interaction. Instead of using conductive tapes, a simple layered connection method was used—each pad consisted of a foil surface connected to a wire, which was secured using duct tape. An additional foil flap was incorporated to maintain contact and improve conductivity between the wire and the touch surface.
+The wires from each pad were routed beneath the surface to keep the interface visually clean and organised. These were then connected directly to the touch input pins of the ESP32, utilising its built-in capacitive sensing capability without the need for additional components.
+The MDF structure was assembled to form an enclosed box, housing the wiring and electronics securely. Provisions were made for USB connectivity to power the system and allow communication during testing.
+Finally, the ESP32 was mounted within the enclosure, and all connections were tested. The system was iteratively refined by adjusting the foil contact and wiring setup to achieve consistent and reliable touch responses across all pads.
 
 ## 17.2 Build Photos
 Add photos throughout the project.
@@ -733,7 +750,7 @@ https://github.com/RishaSalunkhe/ODT2026-ProjectManagementTemplate/blob/main/ima
 | v1 | Week 1 | Single pad MicroPython test on bare ESP32 | Validate that capacitive touch sensing worked before committing to full build |
 | v2 | Week 2 | MDF layout created digitally, foamboard pads assembled | First physical build complete |
 | v3 | Week 3 | MDF cut and assembled, foil and wires stuck onto foambboard | First working end-to-end version
-|  v4  |  Week 4 | Screen display setup, threshold tuning, final fixes | Exhibition-ready version
+| v4 |  Week 4 | Screen display setup, threshold tuning, final fixes | Exhibition-ready version
  
 ---
 
@@ -743,23 +760,26 @@ https://github.com/RishaSalunkhe/ODT2026-ProjectManagementTemplate/blob/main/ima
 Describe the final version of your project.
 
 **Response:**  
-`[Write here]`
+The final outcome is an interactive system consisting of a physical touch interface and a digital visual display. The setup includes eight foil-based capacitive touch pads connected to an ESP32, which detects user interaction through touch. These inputs are mapped to a piano-style interface displayed on a laptop screen, where each touch corresponds to a specific key.
+
+The system is designed to be intuitive, requiring no instructions or prior knowledge. Users are guided through visual cues on the screen, encouraging exploration and interaction. Audio output is handled separately through a phone connected to a Bluetooth speaker, creating a distributed interaction experience where input, visual feedback, and sound exist across different devices.
 
 ## 18.2 What Works Well
-- `[Point 1]`
-- `[Point 2]`
-- `[Point 3]`
+- The capacitive touch system is responsive and allows for quick, intuitive interaction without the need for mechanical buttons.
+- The minimal setup encourages user curiosity, making the experience engaging even for first-time users.
+- The use of separate systems (physical input, visual display, and audio) creates a flexible and adaptable prototype that can be expanded further.
 
 ## 18.3 What Still Needs Improvement
-- `[Point 1]`
-- `[Point 2]`
-- `[Point 3]`
+- While the system successfully enables real-time audio feedback through the mobile application, the synchronisation between touch input and visual feedback on the laptop can be further improved to create a more cohesive experience.
+- The physical interface using foil pads is effective for prototyping but lacks consistency and refinement in terms of sensitivity, durability, and overall finish.
 
 ## 18.4 What Changed From the Original Plan
 How did the project change from the initial idea?
 
 **Response:**  
-`[Write here]`
+Initially, the aim was to create a fully integrated system where touch input, visual feedback, and audio output were seamlessly connected within a single platform. During development, the approach evolved to incorporate a mobile application built using MIT App Inventor to handle audio output, allowing for real-time sound interaction through a phone and Bluetooth speaker.
+
+This shift simplified the implementation of audio feedback while still maintaining interactivity, but resulted in a partial separation between visual and audio systems. Additionally, the physical interface was adapted to use foil-based capacitive touch pads instead of more refined materials, enabling faster prototyping and testing of the core interaction.
 
 ---
 
@@ -771,7 +791,9 @@ What slowed you down?
 How well did you manage time, tasks, and responsibilities?
 
 **Response:**  
-`[Write here]`
+Working as a team on this project highlighted both strengths and gaps in our collaboration. We were aligned on the core idea early on, which helped us move forward quickly without major conflicts in direction. However, as the project progressed, we realised that task distribution could have been more structured. At times, work overlapped or was left dependent on one person, which slowed down certain stages.
+
+Communication played a key role in keeping things functional, especially when integrating hardware and interaction design. Informal discussions helped us solve problems faster, but a more organised system (like clear timelines or role allocation) would have improved efficiency. Overall, the team dynamic was supportive and flexible, but with better planning, we could have achieved a smoother workflow.
 
 ## 19.2 Technical Reflection
 What did you learn about:
@@ -782,7 +804,11 @@ What did you learn about:
 - integration?
 
 **Response:**  
-`[Write here]`
+Technically, the project introduced us to capacitive touch sensing using the ESP32, which was both efficient and challenging. While the ESP32’s built-in touch pins simplified the hardware requirements, achieving stable and consistent touch readings required experimentation with grounding and sensitivity.
+
+One of the main limitations of the system was the lack of direct integration between input (touch), visual output (laptop interface), and audio output (phone via Bluetooth). While each component worked individually, the system functioned more as a distributed setup rather than a fully integrated one. If better communication protocols (such as Bluetooth MIDI or serial data mapping) were implemented, the experience could have been more seamless.
+
+Despite these challenges, the system remained functional and demonstrated the core interaction effectively, which was the primary technical goal.
 
 ## 19.3 Design Reflection
 What did you learn about:
@@ -794,28 +820,36 @@ What did you learn about:
 - iteration?
 
 **Response:**  
-`[Write here]`
+From a design perspective, the project focused on creating an intuitive, low-barrier interaction. The absence of buttons or instructions encouraged users to explore the system naturally, guided only by visual cues. This aligned well with the goal of making the interaction feel immediate and playful.
+
+However, the separation between touch, sound, and visual feedback reduced the sense of responsiveness. A stronger connection between these elements could have enhanced user engagement and immersion. Additionally, while the physical setup (foil pads) was effective for prototyping, it lacked refinement in terms of aesthetics and durability.
+
+The project successfully demonstrated the concept of interactive play, but also revealed the importance of synchronisation and feedback in creating a cohesive user experience.
 
 ## 19.4 If You Had One More Week
 What would you improve next?
 
 **Response:**  
-`[Write here]`
+With one additional week, the primary focus would be on improving system integration. Establishing real-time communication between the ESP32 and the audio output—possibly through Bluetooth MIDI or direct sound triggering—would significantly enhance the experience.
+
+We would also refine the physical interface by replacing foil pads with more durable and visually appealing materials, improving both usability and product quality. On the software side, better synchronisation between the touch input and the visual piano interface would be implemented to create a more responsive system.
+
+Finally, user testing would be expanded to observe how different people interact with the setup, allowing for iterative improvements based on real behaviour. This would help transition the project from a functional prototype to a more polished and user-centered design.
 
 ---
 
 # 20. Final Submission Checklist
 
 Before submission, confirm that:
-- [ ] Team details are complete
-- [ ] Project description is complete
-- [ ] Inspiration sources are included
-- [ ] Player journey is written
+- [*] Team details are complete
+- [*] Project description is complete
+- [*] Inspiration sources are included
+- [*] Player journey is written
 - [ ] Sketches are added
 - [ ] BOM is complete
 - [ ] Purchase list is complete
 - [ ] Budget summary is complete
-- [ ] Mechanical planning is documented if applicable
+- [*] Mechanical planning is documented if applicable
 - [ ] App planning is documented if applicable
 - [ ] Code flowchart is added
 - [ ] Task breakdown is complete
