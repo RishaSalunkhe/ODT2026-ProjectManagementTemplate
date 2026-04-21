@@ -696,7 +696,7 @@ Suggested images:
 Example:
 ```md
 
-
+https://github.com/RishaSalunkhe/ODT2026-ProjectManagementTemplate/blob/main/images/concept%20image.jpeg
 
 ```
 
