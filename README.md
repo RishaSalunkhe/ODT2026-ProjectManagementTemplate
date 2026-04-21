@@ -62,9 +62,9 @@ By the final review, this README should clearly show:
 | `Swaranjali Garima` | `Coding` | `[Role]` | `[Write here]` |
 
 ## 1.3 Project Title
-`[Enter the title of your project]`
-
-## 1.4 One-Line Pitch
+ Dard-E-Disco
+ 
+ ## 1.4 One-Line Pitch
 `[Describe your project in one sentence]`
 
 ## 1.5 Expanded Project Idea
