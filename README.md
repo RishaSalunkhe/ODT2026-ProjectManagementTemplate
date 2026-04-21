@@ -129,7 +129,7 @@ List what inspired the project.
 What makes your project original?
 
 **Response:**  
-Magic Piano takes a mobile game mechanic and makes it fully physical. Instead of tapping a screen, players touch real pads embedded in a real table, with a real projector overhead. The social dimension, four players at one table, sharing a song, is something the mobile version cannot replicate. The handmade quality of the build (foil pads, MDF cutouts, copper tape wiring) gives it a raw, workshop feel that contrasts with the clean projected interface above it.
+Magic Piano takes a mobile game mechanic and makes it fully physical. Instead of tapping a screen, players touch real pads embedded in a real table, with a real projector overhead. The social dimension, four players at one table, sharing a song, is something the mobile version cannot replicate. The handmade quality of the build (foil pads, MDF cutouts) gives it a raw, workshop feel that contrasts with the clean projected interface above it.
 
 ---
 
@@ -156,7 +156,7 @@ key glows on screen → player identifies corresponding pad by position → play
 | Solo or multiplayer | Up to 4 players simultaneously, same side of table |
 | Expected duration of one round | 2–3 minutes |
 | What should the player feel? | Excitement, musical satisfaction, mild competitive tension, delight at making music together |
-| Is explanation required before use? | `[Write here]` |
+| Is explanation required before use? | No, the glowing screen key aligned with the physical pad is self-explanatory. We will have a short brief instructions slide |
 
 ## 4.3 Player Journey
 Describe exactly how a player will use the project.
@@ -170,16 +170,19 @@ Players observe and start tapping the corresponding foil pads in sync.
 The piano keys on screen light up one at a time at 0.25x speed, clearly demonstrating what to do.
 Players observe and start tapping the corresponding foil pads in sync.
 5. **System Response:** The system provides immediate feedback to reinforce learning and engagement. A correct tap produces the corresponding piano note and progresses the sequence, while an incorrect tap triggers an error sound and resets the sequence to the beginning.
-6. **Win / Lose / End Condition:** 
-7. **Reset:** `[How does the next round begin?]`
+6. **Win / Lose / End Condition:** Each level completion is marked by a visual flash on the screen. Finishing the final advanced level signifies the end of the full interaction cycle and gives the player a clear sense of completion. After successfully completing the tutorial, the experience transitions into the main level at 0.75x speed, increasing the pace and challenge. Upon completing this level, the player unlocks the advanced level at full 1x speed, creating a clear sense of progression and mastery.
+7. **Reset:** Once the final level is completed, any touch input resets the system instantly. The game returns to the tutorial phase, allowing new or returning players to begin the experience again seamlessly.
 
 ## 4.4 Rules of Play
 If your project is a game, list the rules clearly.
 
-- `[Rule 1]`
-- `[Rule 2]`
-- `[Rule 3]`
-- `[Rule 4]`
+- Tap the pad that corresponds to the currently glowing key on screen.
+- Tapping any other pad counts as a wrong move.
+- A wrong move resets the sequence to the beginning — no partial credit.
+- Players cannot share tapping freely — there is an assigned pad per player.
+- The goal is to complete the full song sequence without a single wrong tap.
+
+
 
 ---
 
@@ -188,17 +191,19 @@ If your project is a game, list the rules clearly.
 ## 5.1 Definition of “Playable”
 Your project will be considered complete only if these conditions are met.
 
-- [ ] `[Condition 1]`
-- [ ] `[Condition 2]`
-- [ ] `[Condition 3]`
-- [ ] `[Condition 4]`
-- [ ] `[Condition 5]`
+- [ ]  All 8 foil pads reliably detect finger touch and send the correct signal to the ESP32
+- [ ]  The ESP32 correctly identifies which pad was touched and sends the signal to the laptop via USB serial
+- [ ]  The Python script on the laptop correctly plays the corresponding piano note on a correct touch
+- [ ]  The Python script plays an error sound and resets the sequence on a wrong touch
+- [ ]  The screen display shows keys lighting up in song sequence and is spatially aligned with the physical pads
+- [ ]   At least one full song sequence can be completed without system failure
+
 
 ## 5.2 Minimum Viable Version
 What is the smallest version of this project that still delivers the core experience?
 
 **Response:**  
-`[Write here]`
+A working version where at least 4 of the 8 pads function, the screen shows which key to tap, a correct tap plays a note, and a wrong tap resets, even if only one song is loaded and the build finish is rough.
 
 ## 5.3 Stretch Features
 What features are nice to have but not essential?
