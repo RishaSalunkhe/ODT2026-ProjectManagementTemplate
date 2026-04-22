@@ -208,9 +208,9 @@ A working version where at least 4 of the 8 pads function, the screen shows whic
 ## 5.3 Stretch Features
 What features are nice to have but not essential?
 
-- `[Stretch feature 1]`
-- `[Stretch feature 2]`
-- `[Stretch feature 3]`
+- Multiplayer score tracking displayed on screen — counting how many correct taps each player makes individually
+- Visual feedback on the projected screen highlighting which pad was just tapped
+- Variable song and instrument settings selectable before the game begins
 
 ---
 
@@ -243,7 +243,13 @@ Include:
 - app interaction if any.
 
 **Response:**  
-`[Write here]`
+6.2 High-Level System Description
+
+The system has three layers. The input layer is 8 aluminium foil touch pads embedded in a laser-cut MDF table. Each pad is wired directly to a capacitive touch GPIO pin on the ESP32. When a player touches a pad, the ESP32 detects the drop in capacitance and identifies which pad was touched.
+
+The processing layer is the ESP32 running MicroPython. It continuously reads all 8 touch pins, compares values against a threshold of 200, and assigns a corresponding letter value to a response variable. It simultaneously hosts a WiFi access point and runs an HTTP server that responds to requests from the phone.
+
+The output layer is a phone running the MIT App Inventor app, connected to the ESP32's WiFi. The app polls the ESP32 every 100ms using a Clock and Web component. When it receives a letter matching one of the 8 notes, it plays the corresponding pre-uploaded MP3 through the phone's speaker. A laptop connected via USB to the projector runs the projected video sequence on screen showing which key to tap next.
 
 ## 6.3 Input / Output Map
 
@@ -383,9 +389,9 @@ Insert a hand-drawn or software-made circuit diagram.
 | Question | Response |
 |---|---|
 | Power source | USB (micro-USB from laptop to ESP32) |
-| Voltage required | `[Write here]` |
-| Current concerns | `[Write here]` |
-| Safety concerns | `[Write here]` |
+| Voltage required | 5V supplied directly from laptop USB port |
+| Current concerns |  No external components drawing current — touch pins draw negligible current. Total current draw stays well within laptop USB output limits |
+| Safety concerns |  ESP32 powered entirely through laptop USB — no external power supply, no separate voltage source, no risk of overvoltage. All GPIO touch pins operate at 3.3V logic internally and have only a single wire attached with nothing else connected |
 
 ---
 
@@ -562,20 +568,30 @@ Include:
 - how documentation will be maintained.
 
 **Response:**  
-Tasks are divided by domain. Risha owns all physical build and hardware, MDF cutting, foil pad assembly, wiring, and ESP32 physical connections. Swaranjali owns all software, MicroPython on the ESP32, Python game script on the laptop, screen display, and audio. Decisions are made jointly at the start of each class. Progress is checked at the start of every session — each person states what is done and what is blocked. If a task is delayed, the other person assists. Documentation is maintained by both throughout — not left until the end.
+Tasks are divided by domain. Risha owns all physical build and hardware, MDF cutting, foil pad assembly, wiring, and ESP32 physical connections. Swaranjali owns all software, MicroPython on the ESP32, Python game script on the laptop, screen display, circuit connections and audio. Decisions are made jointly at the start of each class. Progress is checked at the start of every session — each person states what is done and what is blocked. If a task is delayed, the other person assists. Documentation is maintained by both throughout — not left until the end.
 
 ## 13.2 Task Breakdown
 
 | Task ID | Task | Owner | Estimated Hours | Deadline | Dependency | Status |
 |---|---|---|---:|---|---|---|
-| T1 | Finalise concept and game mechanic | Risha & Swaranjali | 6 | `[Date]` | `None` | `To Do` |
-| T2 | Complete BOM and procure materials` | `[Name]` | `1` | `[Date]` | `T1` | `To Do` |
-| T3 | Upload ESP32 sketch and test touch pins | `[Name]` | `2` | `[Date]` | `T1` | `To Do` |
-| T4 | `[Build structure]` | `[Name]` | `4` | `[Date]` | `T1` | `To Do` |
-| T5 | `[Write control code]` | `[Name]` | `4` | `[Date]` | `T3` | `To Do` |
-| T6 | `[Integrate system]` | `[Name]` | `4` | `[Date]` | `T4, T5` | `To Do` |
-| T7 | `[Playtest]` | `[Name]` | `2` | `[Date]` | `T6` | `To Do` |
-| T8 | `[Refine and document]` | `[Name]` | `3` | `[Date]` | `T7` | `To Do` |
+| T1 | Finalise concept and game mechanic | Risha & Swaranjali | 3 | None | Done |
+| T2 | Complete BOM and procure materials | Risha & Swaranjali | 1 | T1 | Done |
+| T3 | Make Illustrator file for laser cut structure | Risha | 3 | T1 | Done |
+| T4 | Edit and correct Illustrator file | Swaranjali | 1 | T3 | Done |
+| T5 | Laser cut MDF parts | Risha | 1 | T4 | Done |
+| T6 | Paint, assemble and build MDF structure | Risha | 6 | T5 | Done |
+| T7 | Build foamboard support and foil touch pads | Risha | 3 | T5 | Done |
+| T8 | Connect touch pad wires to pads | Risha | 2 | T7 | Done |
+| T9 | Connect all wires to breadboard and ESP32 GPIO | Swaranjali | 2 | T8 | Done |
+| T10 | Final structure assembly and paper cup supports | Swaranjali | 2 | T6, T7 | Done |
+| T11 | Write and test MicroPython touch code in Thonny | Swaranjali | 4 | T9 | Done |
+| T12 | Set up WiFi and HTTP server on ESP32 | Swaranjali | 3 | T11 | Done |
+| T13 | Build MIT App Inventor blocks and upload MP3s | Swaranjali | 3 | T12 | Done |
+| T14 | Full system integration and debugging | Swaranjali | 4 | T12, T13 | Done |
+| T15 | Make video slides and tutorial | Swaranjali | 3 | T1 | Done |
+| T16 | Edit slides and make title slide | Risha | 2 | T15 | Done |
+| T17 | Final playtesting and refinement | Risha & Swaranjali | 2 | T14 | Done |
+| T18 | Complete README documentation | Risha (lead), Swaranjali | 3 | T17 |
 
 ## 13.3 Responsibility Split
 
@@ -585,7 +601,7 @@ Tasks are divided by domain. Risha owns all physical build and hardware, MDF cut
 | Electronics | Swaranjali | Risha |
 | Coding | Swaranjali | -` |
 | App | Swaranjali | - |
-| Physical Structure | Risha | - |
+| Physical Structure | Risha | Swaranjali |
 | Testing | Risha & Swaranjali | Risha & Swaranjali |
 | Documentation | Risha | Swaranjali |
 
@@ -609,7 +625,7 @@ Expected outcomes:
 Expected outcomes:
 - [ ] Electronics tests completed
 - [*] CAD / structure planning completed
-- [ *] App UI started if needed
+- [*] App UI started if needed
 - [ ] Mechanical concept tested
 - [ ] Main subsystems partially working
 
@@ -617,14 +633,14 @@ Expected outcomes:
 Expected outcomes:
 - [*] Physical body built
 - [*] Electronics integrated
-- [ ] Code connected to hardware
+- [*] Code connected to hardware
 - [*] App connected if required
 - [ ] First playable version exists
 
 ### Week 4 — Refine and Finish
 Expected outcomes:
 - [*] Technical bugs reduced
-- [ ] Playtesting completed
+- [*] Playtesting completed
 - [*] Improvements made
 - [*] Documentation completed
 - [*] Final build ready
@@ -633,10 +649,10 @@ Expected outcomes:
 
 | Week | Planned Goal | What Actually Happened | What Changed | Next Steps |
 |---|---|---|---|---|
-| Week 1 | Finalise concept, test ESP32 touch, procure materials | Concept finalised and ESP32 touch tested. Materials like MDF, foamboard, and foil were procured. | `[Write here]` | `[Write here]` |
-| Week 2 | Build pads, wire ESP32, build Python script | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 3 | Full integration, screen alignment, first playtest | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 4 | Debug, refine, playtest, document | `[Write here]` | `[Write here]` | `[Write here]` |
+| Week 1 | Finalise concept, BOM, and begin structure planning | Concept finalised as a touch-pad piano game. BOM listed. Illustrator file for laser cutting started by Risha and corrected by Swaranjali | Song choice and note mapping finalised. Decided on 8 notes of one octave | Procure materials, laser cut structure |
+| Week 2 | Laser cut structure, begin electronics and coding | MDF laser cut. Structure painted and assembled by Risha. Foil touch pads built. Swaranjali began touch pin testing in Thonny. Threshold issue found and fixed. GPIO 2 boot pin issue found and resolved | Switched GPIO 2 to GPIO 32. Threshold changed from 100 to 200 | Complete wiring, begin WiFi and App Inventor integration |
+| Week 3 | Integrate ESP32 with App Inventor, get sound working | WiFi and HTTP server added to ESP32 code. App Inventor set up with Clock, Web, and 8 Players. Sound triggered first time via manual button. Shifted to automatic Clock trigger. Full 8-pad mapping completed and working | Removed manual button entirely. Merged all GotText blocks into one. Added global retval variable | Fix response time, final structure assembly |
+| Week 4 | Refine timing, complete structure, finalise documentation | Response time fixed by reducing Clock interval to 100ms and time.sleep to 0.05s. Final structure completed with paper cup supports. Video slides made by Swaranjali, title slide edited by Risha. README completed | System fully working. No further code changes needed | Submit repository and prepare for exhibition |
 
 ---
 
@@ -666,10 +682,13 @@ Whether the aluminium foil pads connected via copper tape through foamboard and 
 
 | What Needs Testing | How You Will Test It | Success Condition |
 |---|---|---|
-| `[Bluetooth connection]` | `[Method]` | `[What counts as success?]` |
-| `[Mechanism movement]` | `[Method]` | `[What counts as success?]` |
-| `[Sensor behavior]` | `[Method]` | `[What counts as success?]` |
-| `[App communication]` | `[Method]` | `[What counts as success?]` |
+| Individual touch pad detection | Touch each foil pad one at a time while Thonny prints pin name | All 8 pads print correct pin name with no false triggers |
+| Threshold sensitivity | Vary finger pressure and test at different threshold values | Consistent detection at threshold 200 with no false reads when untouched |
+| WiFi connection between ESP32 and phone | Connect phone to hotspot and check app response | Phone connects without error and app receives response from ESP32 |
+| Correct MP3 triggered per pad | Touch each pad and listen to audio output on phone | Each pad plays only its corresponding note with no wrong audio |
+| Response time | Touch pad and measure delay until sound plays | Sound plays within 200ms of touch with no noticeable lag |
+| Full song sequence completion | Run through complete song sequence without errors | All notes play in correct order with no missed or wrong triggers |
+
 
 ## 16.2 Playtesting Plan
 
@@ -699,8 +718,9 @@ Whether the aluminium foil pads connected via copper tape through foamboard and 
 
 | Tester | What They Did | What Confused Them | What They Enjoyed | What You Will Change |
 |---|---|---|---|---|
-| `[Peer / friend / classmate]` | `[Observation]` | `[Observation]` | `[Observation]` | `[Action]` |
-| `[Peer / friend / classmate]` | `[Observation]` | `[Observation]` | `[Observation]` | `[Action]` |
+| Classmate 1 | Tapped pads following the screen sequence | Briefly unsure which physical pad matched which screen key | Liked the immediate sound response on correct tap | Align pad labels more clearly with screen keys |
+| Classmate 2 | Played through full song with another player | Expected louder sound from phone speaker | Enjoyed the physical feel of pressing the foil pad | Consider external speaker for exhibition |
+| Team member (self-test) | Ran full 8-pad sequence repeatedly during debugging | Occasional ghost trigger when hand hovered near pad | Satisfying when full sequence completed cleanly | Fine-tune threshold if ghost triggers persist in exhibition environment |
 
 ---
 
@@ -738,9 +758,9 @@ Suggested images:
 
 Example:
 ```md
-
+```
 https://github.com/RishaSalunkhe/ODT2026-ProjectManagementTemplate/blob/main/images/concept%20image.jpeg
-
+```
 ```
 
 ## 17.3 Version History
