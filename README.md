@@ -662,10 +662,12 @@ Expected outcomes:
 
 | Risk | Type | Likelihood | Impact | Mitigation Plan | Owner |
 |---|---|---|---|---|---|
-| `[Example: Bluetooth disconnects]` | `Technical` | `Medium` | `High` | `[Fallback interaction / simplify connection flow]` | `[Name]` |
-| `[Example: Structure breaks during play]` | `Mechanical` | `Medium` | `High` | `[Reinforce joints / change material]` | `[Name]` |
-| `[Risk]` | `[Technical / Material / Time / Gameplay]` | `[Low/Medium/High]` | `[Low/Medium/High]` | `[Plan]` | `[Name]` |
-| `[Risk]` | `[Type]` | `[Low/Medium/High]` | `[Low/Medium/High]` | `[Plan]` | `[Name]` |
+| GPIO 0 and GPIO 2 cause upload failures | Technical | High | High |  Disconnect T1 and T2 wires before every code upload, reconnect after | Swaranjali |
+| Foil pads give inconsistent readings | Technical | Medium | High | Tune TOUCH_THRESHOLD per pad in MicroPython; increase foil surface area if needed | Risha |
+| Screen not spatially aligned with pads after moving setup | Technical | Medium | High | Mark exact screen and table position with tape on floor before exhibition | Both |
+| Wire connections under MDF come loose | Mechanical | Medium | High | Reinforce all copper tape joints; pull-test every wire before exhibition day | Risha |
+| Python serial port not recognised on laptop | `Technical | Low | High | Test serial connection in Week 1; install correct drivers if needed (CP210x or CH340) | Swaranjali |
+| Players touch wrong pad due to misalignment of screen vs table | Gameplay | Low | Medium | Carefully align screen horizontally with pads during setup; test with a fresh player before opening | Risha |
 
 ## 15.2 Biggest Unknown Right Now
 What is the single biggest uncertainty in your project at this stage?
