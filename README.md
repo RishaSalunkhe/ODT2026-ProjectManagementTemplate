@@ -284,7 +284,9 @@ Add a sketch with labels showing:
 - moving parts,
 - output elements.
 
-**Insert image below:**  
+**Insert image below:** 
+
+https://github.com/RishaSalunkhe/ODT2026-ProjectManagementTemplate/blob/main/images/sketches.jpeg
  
 
 ## 7.3 Approximate Dimensions
@@ -418,7 +420,13 @@ Include:
 - reset behavior.
 
 **Response:**  
-`[Write here]`
+*Startup behavior:* ESP32 initializes all 8 touch pins and connects to WiFi hotspot. MIT App Inventor app launches on phone and connects to ESP32's IP via Clock timer.
+*Input handling:* Each touch pin is read in a loop. If any pin reads below threshold (200), the corresponding variable value is set.
+*Sensor reading*: All 8 TouchPad pins are read every loop cycle using .read() and compared against threshold.
+*Decision logic: *If value < 200, set retval to the corresponding note letter. App Inventor receives retval and matches it to an if-else block to select the correct audio.
+*Output behavior: *MIT App Inventor plays the corresponding MP3 note on the phone.
+*Communication logic: *ESP32 runs a WiFi access point. Phone connects to it. App's Clock polls the ESP32's IP every 100ms via Web.Get and reads the response text.
+*Reset behavior:* retval resets to "0" after each successful read so the same note doesn't retrigger.
 
 ## 10.3 Code Flowchart
 Insert a flowchart showing your code logic.
@@ -434,7 +442,62 @@ Suggested sequence:
 - error handling.
 
 **Insert image below:**  
-`[Upload image and link here]`
+10.3
+START
+    │
+    ▼
+Initialize 8 touch pins (GPIO 4,12,13,14,15,27,32,33)
+Set retval = "0"
+    │
+    ▼
+Connect ESP32 to WiFi hotspot ("touchpadpiano")
+    │
+    ▼
+Start HTTP server on IP 192.168.4.1
+    │
+    ▼
+┌─────────────────────────────────┐
+│           MAIN LOOP             │
+│                                 │
+│  Read all 8 touch pin values    │
+│         │                       │
+│         ▼                       │
+│  Any pin < threshold (200)?     │
+│    YES → set retval = note      │
+│    NO  → retval stays "0"       │
+│         │                       │
+│         ▼                       │
+│  app.process() called           │
+│  (app requests retval via WiFi) │
+│         │                       │
+│         ▼                       │
+│  Return retval to app           │
+│  Reset retval = "0"             │
+│         │                       │
+│         ▼                       │
+│  Wait 0.05 seconds              │
+│         │                       │
+└─────────┘ (loop back)
+
+
+Clock ticks every 100ms
+    │
+    ▼
+Web.Get → calls ESP32 IP
+    │
+    ▼
+GotText received
+    │
+    ▼
+Is response = "a"? → Play D4.mp3
+Is response = "b"? → Play Dsharp.mp3
+Is response = "c"? → Play E4.mp3
+Is response = "d"? → Play F4.mp3
+Is response = "e"? → Play Fsharp.mp3
+Is response = "f"? → Play G4.mp3
+Is response = "g"? → Play Asharp.mp3
+Is response = "h"? → Play A4.mp3
+None matched → do nothing
 
 ## 10.4 Pseudocode
 
@@ -488,22 +551,29 @@ The app enhances the experience by enabling immediate audio feedback for each to
 
 | Feature | Purpose |
 |---|---|
-| `[Bluetooth connect button]` | `[Purpose]` |
-| `[Score display]` | `[Purpose]` |
-| `[Control button / slider / label]` | `[Purpose]` |
+| Web component | Sends HTTP GET request to ESP32's IP (192.168.4.1) to fetch which pad was touched |
+| Clock component (100ms interval) | Automatically and repeatedly polls the ESP32 without any manual input |
+| Player 1 – Player 8 | Each holds one uploaded MP3 note file and plays it when the matching trigger is received |
+| GotText event block | Receives the ESP32 response letter and routes it to the correct Player |
+
 
 ## 11.4 UI Mockup
 Insert a sketch or screenshot of the app interface.
 
 **Insert image below:**  
-`[Upload image and link here]`
+The app has no screen interface. There are no buttons, labels, sliders, or visible elements. All 10 components (Web, Clock, and 8 Players) are non-visible and run entirely in the background. The only user action required is connecting the phone to the ESP32's WiFi hotspot before launching the app. After that, everything runs automatically with no interaction needed.
+
 
 ## 11.5 App Screen Flow
 
-1. `[Step 1]`
-2. `[Step 2]`
-3. `[Step 3]`
-4. `[Step 4]`
+1. Phone connects to ESP32 WiFi hotspot "touchpadpiano" (password: 12345678)
+2. App is opened via MIT AI2 Companion — screen appears blank, nothing visible
+3. Clock begins ticking every 100ms automatically on launch
+4. Every tick, Web component sends GET request to http://192.168.4.1/
+5. ESP32 responds with a letter "a" through "h" depending on which pad is touched, or "0" if nothing is touched
+6. GotText block receives response and checks it against 8 if-else conditions
+7. Matching condition triggers the corresponding Player to play its MP3
+8. Response "0" matches nothing and the clock simply ticks again
 
 ---
 
@@ -514,8 +584,6 @@ Insert a sketch or screenshot of the app interface.
 | Item | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec | Why This Choice? |
 |---|---:|---|---|---:|---|---|
 | ESP32 WROOM-32 DevKit |1| Yes | Yes | 599 | SquadPixel ESP-WROOM-32, 38-pin | Has 8 built-in capacitive touch pins, no external sensor IC needed |
-| MDF board | 1 | No | No | `[Cost]` | `[Spec]` | `[Reason]` |
-| `[Item]` | `[Qty]` | `[Yes/No]` | `[Yes/No]` | `[Cost]` | `[Spec]` | `[Reason]` |
 
 ## 12.2 Material Justification
 Explain why you selected your main materials and components.
@@ -542,10 +610,10 @@ USB serial over Bluetooth: Wired USB is more reliable for a live exhibition — 
 | Budget Item | Estimated Cost |
 |---|---:|
 | Electronics | 599 |
-| Mechanical parts | `[Cost]` |
-| Fabrication materials | `[Cost]` |
-| Purchased extras | `[Cost]` |
-| Contingency | `[Cost]` |
+| Mechanical parts | -|
+| Fabrication materials | - |
+| Purchased extras | - |
+| Contingency | - |
 | **Total** | 599 |
 
 ## 12.5 Budget Reflection
@@ -599,7 +667,7 @@ Tasks are divided by domain. Risha owns all physical build and hardware, MDF cut
 |---|---|---|
 | Concept and gameplay | Risha & Swaranjali | Risha & Swaranjali  |
 | Electronics | Swaranjali | Risha |
-| Coding | Swaranjali | -` |
+| Coding | Swaranjali | - |
 | App | Swaranjali | - |
 | Physical Structure | Risha | Swaranjali |
 | Testing | Risha & Swaranjali | Risha & Swaranjali |
@@ -867,20 +935,20 @@ Before submission, confirm that:
 - [*] Project description is complete
 - [*] Inspiration sources are included
 - [*] Player journey is written
-- [ ] Sketches are added
-- [ ] BOM is complete
-- [ ] Purchase list is complete
-- [ ] Budget summary is complete
+- [*] Sketches are added
+- [*] BOM is complete
+- [*] Purchase list is complete
+- [*] Budget summary is complete
 - [*] Mechanical planning is documented if applicable
-- [ ] App planning is documented if applicable
-- [ ] Code flowchart is added
-- [ ] Task breakdown is complete
-- [ ] Weekly logs are updated
-- [ ] Risk register is complete
-- [ ] Testing log is updated
-- [ ] Playtesting notes are included
-- [ ] Build photos are included
-- [ ] Final reflection is written
+- [*] App planning is documented if applicable
+- [*] Code flowchart is added
+- [*] Task breakdown is complete
+- [*] Weekly logs are updated
+- [*] Risk register is complete
+- [*] Testing log is updated
+- [*] Playtesting notes are included
+- [*] Build photos are included
+- [*] Final reflection is written
 
 ---
 
