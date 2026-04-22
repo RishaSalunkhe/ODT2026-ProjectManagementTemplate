@@ -1,0 +1,79 @@
+CODE
+def pianocontrol(params):
+    return retval
+    
+import machine
+import time
+from applink import AppInventorLink
+retval=''
+
+app = AppInventorLink()
+
+app.start_ap("touchpadpiano", "12345678")
+app.on_request(pianocontrol)
+
+#Initialize touch pins                                                                                                                                                                                                                                                                                                                                                                 
+touch1 = machine.TouchPad(machine.Pin(4))
+touch2 = machine.TouchPad(machine.Pin(12))
+touch3 = machine.TouchPad(machine.Pin(13))
+touch4 = machine.TouchPad(machine.Pin(14))
+touch5 = machine.TouchPad(machine.Pin(15))
+touch6 = machine.TouchPad(machine.Pin(27))
+touch7 = machine.TouchPad(machine.Pin(32))
+touch8 = machine.TouchPad(machine.Pin(33))
+
+# Threshold - you might need to adjust this based on your wiring
+threshold = 200
+
+print("System Ready. Touch a pin!")
+
+while True:
+# Read the capacitance values
+    val1 = touch1.read()
+    val2 = touch2.read()
+    val3 = touch3.read()
+    val4 = touch4.read()
+    val5 = touch5.read()
+    val6 = touch6.read()
+    val7 = touch7.read()
+    val8 = touch8.read()
+    retval=''
+#Check Pin 2
+    if val1 < threshold:
+        print("Pin 4")
+        retval="a"
+         
+    if val2 < threshold:
+        print("Pin 12")
+        retval="b"
+            
+    if val3 < threshold:
+        print("Pin 13")
+        retval="c"
+            
+    if val4 < threshold:
+        print("Pin 14")
+        retval="d"
+            
+    if val5 < threshold:
+        print("Pin 15")
+        retval="e"
+          
+    if val6 < threshold:
+       print("Pin 27")
+       retval="f"
+           
+    if val7 < threshold:
+        print("Pin 32")
+        retval="g"
+            
+    if val8 < threshold:
+        print("Pin 33")
+        retval="h"
+         
+    app.process()
+    
+    #
+    # Crucial: This 0.1s delay prevents the CPU from overworking 
+    # and makes the output readable.
+    time.sleep(0.01)
