@@ -219,16 +219,16 @@ What features are nice to have but not essential?
 ## 6.1 Project Type
 Check all that apply.
 
-- [ ] Electronics-based
+- [*] Electronics-based
 - [ ] Mechanical
 - [*] Sensor-based
 - [*] App-connected
 - [ ] Motorized
-- [ ] Sound-based
+- [*] Sound-based
 - [ ] Light-based
-- [ ] Screen/UI-based
-- [ ] Fabricated structure
-- [ ] Game logic based
+- [*] Screen/UI-based
+- [*] Fabricated structure
+- [*] Game logic based
 - [*] Installation / tabletop experience
 - [ ] Other: `[Write here]`
 
@@ -285,16 +285,16 @@ Add a sketch with labels showing:
 - output elements.
 
 **Insert image below:**  
-`[Upload image and link here]`
+ 
 
 ## 7.3 Approximate Dimensions
 
 | Dimension | Value |
 |---|---|
-| Length | `[Write here]` |
-| Width | `[Write here]` |
-| Height | `[Write here]` |
-| Estimated weight | `[Write here]` |
+| Length | 48" |
+| Width | 8" |
+| Height | 3" |
+| Estimated weight | 3.4 kg |
 
 ---
 
@@ -382,7 +382,7 @@ Each of the 8 aluminium foil touch pads is connected by a single wire to its cor
 Insert a hand-drawn or software-made circuit diagram.
 
 **Insert image below:**  
-`[Upload image and link here]`
+(https://github.com/RishaSalunkhe/ODT2026-ProjectManagementTemplate/blob/main/images/Swaranjali%2CRisha_Circuit%20diagram.png)
 
 ## 9.4 Power Plan
 
